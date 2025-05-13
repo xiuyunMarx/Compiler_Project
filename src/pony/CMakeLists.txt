@@ -36,13 +36,57 @@ include_directories(${PROJECT_BINARY_DIR}/include)
 link_directories(${LLVM_BUILD_LIBRARY_DIR})
 add_definitions(${LLVM_DEFINITIONS})
 
+include_directories(include)
+add_subdirectory(include)
 
-add_custom_target(Pony)
-set_target_properties(Pony PROPERTIES FOLDER Examples)
+set(LLVM_LINK_COMPONENTS
+  Core
+  Support
+  nativecodegen
+  OrcJIT
+  )
 
-macro(add_pony_chapter name)
-  add_dependencies(Pony ${name})
-  add_llvm_example(${name} ${ARGN})
-endmacro(add_pony_chapter name)
+set(LLVM_TARGET_DEFINITIONS mlir/PonyCombine.td)
+mlir_tablegen(PonyCombine.inc -gen-rewriters)
+add_public_tablegen_target(PonyCombineIncGen)
 
-add_subdirectory(pony)
+add_pony_chapter(pony
+  ponyc.cpp
+  parser/AST.cpp
+  mlir/MLIRGen.cpp
+  mlir/Dialect.cpp
+  mlir/LowerToAffineLoops.cpp
+  mlir/LowerToLLVM.cpp
+  mlir/ShapeInferencePass.cpp
+  mlir/PonyCombine.cpp
+
+  DEPENDS
+  PonyShapeInferenceInterfaceIncGen
+  PonyOpsIncGen
+  PonyCombineIncGen
+  )
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/include/)
+get_property(dialect_libs GLOBAL PROPERTY MLIR_DIALECT_LIBS)
+get_property(conversion_libs GLOBAL PROPERTY MLIR_CONVERSION_LIBS)
+target_link_libraries(pony
+  PRIVATE
+    ${dialect_libs}
+    ${conversion_libs}
+    MLIRAnalysis
+    MLIRCallInterfaces
+    MLIRCastInterfaces
+    MLIRExecutionEngine
+    MLIRIR
+    MLIRLLVMCommonConversion
+    MLIRLLVMIR
+    MLIRLLVMToLLVMIRTranslation
+    MLIRMemRef
+    MLIRParser
+    MLIRPass
+    MLIRSideEffectInterfaces
+    MLIRSupport
+    MLIRTargetLLVMIRExport
+    MLIRTransforms
+    )
