@@ -42,6 +42,10 @@ enum Token : int {
   tok_number = -6,
 };
 
+struct TokenInfo{
+  Token tok;
+  llvm::StringRef data; 
+};
 /// The Lexer is an abstract base class providing all the facilities that the
 /// Parser expects. It goes through the stream one token at a time and keeps
 /// track of the location in the file for debugging purpose.
@@ -150,6 +154,8 @@ class Lexer {
         lastChar = Token(getNextChar());
       }
       identifierStr = idStr;
+
+      llvm::outs() << "" << idStr << " ";
       if (idStr == "return")   { recordedTokens.push_back(tok_return); return tok_return; }
       if (idStr == "var")      { recordedTokens.push_back(tok_var);    return tok_var; }
       if (idStr == "def")      { recordedTokens.push_back(tok_def);    return tok_def; }
@@ -184,6 +190,7 @@ class Lexer {
         llvm::errs() << "Illegal number format: " << numStr << "\n";
       }
       numVal = strtod(numStr.c_str(), nullptr);
+      llvm::outs() << "" << numStr << " ";
       recordedTokens.push_back(tok_number);
       return tok_number;
     }
@@ -204,11 +211,13 @@ class Lexer {
     }
 
     // Otherwise, just return the character as its ascii value.
+    llvm::outs() << "" << (char)lastChar << " ";
     Token thisChar = Token(lastChar);
     lastChar = Token(getNextChar());
     recordedTokens.push_back(thisChar);
     return thisChar;
   }
+
 
   /// The last token read from the input.
   Token curTok = tok_eof;

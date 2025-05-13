@@ -223,7 +223,7 @@ int dumpToken() {
     case pony::tok_sbracket_close:  name = "]"; break;
     default:
       // For other single-character tokens
-      name = "unknown";
+      name = " "; //none output
     }
     llvm::outs() << name << '\n';
   }
