@@ -172,7 +172,7 @@ int loadAndProcessMLIR(mlir::MLIRContext &context,
   if (mlir::failed(pm.run(*module))) return 4;
   return 0;
 }
-// TODO:补充“词法分析器正确性”验证程序int dumpToken()
+
 int dumpToken() {
   if (inputType == InputType::MLIR) {
     llvm::errs() << "Can't dump Pony Tokens when the input is MLIR\n";
@@ -190,13 +190,43 @@ int dumpToken() {
 
   lexer.getNextToken();  // prime the lexer
 
-  // TODO: 使用lexer遍历整个文档，最终按顺序输出识别到的每一种Token
-  //       具体输出格式可参考大作业文档中给出的示例。
-  /*
-   *
-   *  Write your code here.
-   *
-   */
+  // Consume and record all tokens until EOF
+  while (lexer.getCurToken() != pony::tok_eof) {
+    lexer.getNextToken();
+  }
+  // Include the EOF token
+  lexer.getNextToken();
+
+  // If any lexical errors were detected, report and exit
+  if (lexer.hadLexError()) {
+    llvm::errs() << "Lexical analysis encountered errors.\n";
+    return 1;
+  }
+
+  // Otherwise, print all recorded tokens in order
+  auto tokens = lexer.getRecordedTokens();
+  for (auto tok : tokens) {
+    const char *name = nullptr;
+    switch (tok) {
+    case pony::tok_eof:             name = "<EOF>"; break;
+    case pony::tok_return:          name = "return"; break;
+    case pony::tok_var:             name = "var"; break;
+    case pony::tok_def:             name = "def"; break;
+    case pony::tok_identifier:      name = "identifier"; break;
+    case pony::tok_number:          name = "number"; break;
+    case pony::tok_semicolon:       name = ";"; break;
+    case pony::tok_parenthese_open: name = "("; break;
+    case pony::tok_parenthese_close:name = ")"; break;
+    case pony::tok_bracket_open:    name = "{"; break;
+    case pony::tok_bracket_close:   name = "}"; break;
+    case pony::tok_sbracket_open:   name = "["; break;
+    case pony::tok_sbracket_close:  name = "]"; break;
+    default:
+      // For other single-character tokens
+      name = "unknown";
+    }
+    llvm::outs() << name << '\n';
+  }
   return 0;
 }
 

@@ -90,39 +90,37 @@ class Lexer {
   // Return the current column in the file.
   int getCol() { return curCol; }
 
+  /// Access recorded tokens and error status for validation output
+  const std::vector<Token>& getRecordedTokens() const { return recordedTokens; }
+  bool hadLexError() const { return lexHadError; }
+
  private:
   /// Delegate to a derived class fetching the next line. Returns an empty
   /// string to signal end of file (EOF). Lines are expected to always finish
   /// with "\n"
   virtual llvm::StringRef readNextLine() = 0;
 
-  // TODO: Implement function getNextChar().
+  // Record all tokens seen and whether a lexical error occurred
+  std::vector<Token> recordedTokens;
+  bool lexHadError = false;
 
-  // Function description:
-  // 该函数从curLineBuffer中获取当前行的下一个char，如果已经处理到当前行最后一个char，则通过读取下一行
-  //                       来更新curLineBuffer以确保curLineBuffer非空。
-
-  // Hints: 1. 函数实现过程中可能会用到lexer的部分成员变量（如curLineBuffer）；
-  //        2.
-  //        注意读到文档结尾，读到某一行结尾等特殊情况的处理。一般来说，读到文档结尾应返回EOF，某一行结尾最后一个char为'\n'；
-  //        3. 注意行列位置信息的同步更新；
-  //        4. 关于llvm::StringRef的部分函数：llvm::StringRef example;
-  //        example.front(); example.drop_front(); example.empty()。
   int getNextChar() {
-    char ret ;
-    if(curLineBuffer.empty()){
-      ret = EOF;
-      curLineBuffer = readNextLine();
-      curLineNum++;
-      curCol = 0;
-    }else{
-      
+    // If buffer is empty, read next line
+    if (curLineBuffer.empty()) {
+        auto nextLine = readNextLine();
+        // End of file
+        if (nextLine.empty())
+            return EOF;
+        // Load new line
+        curLineBuffer = nextLine;
+        ++curLineNum;
+        curCol = 0;
     }
-    /*
-     *
-     *  Write your code here.
-     *
-     */
+    // Consume next character
+    char c = curLineBuffer.front();
+    curLineBuffer = curLineBuffer.drop_front();
+    ++curCol;
+    return c;
   }
 
   ///  Return the next token from standard input.
@@ -134,34 +132,59 @@ class Lexer {
     lastLocation.line = curLineNum;
     lastLocation.col = curCol;
 
-    // TODO: 补充成员函数getTok()。
-    //       1. 能够识别“return”、“def”和“var”三个关键字；
-    //       2. 能够识别标识符（函数名，变量名等）：
-    //          • 标识符由字母、数字或下划线组成；
-    //          • 标识符以字母或下划线开头；
-    //          • 标识符中有数字时，数字不可连续出现
-    //          例如：有效的标识符可以是 ab3c, _b, placeholder 等。
-    //       3.
-    //       在识别每种Token的同时，将其存放在某种数据结构中，以便最终在终端输出
-    //
-    // Hints: 1. 在实现第1，2点时，可参考getTok()函数中现有的识别数字的方法。
-    //        2. 一些有用的函数:  isalpha(); isalnum();
-    /*
-     *
-     *  Write your code here.
-     *
-     */
+    // Identifier and keyword recognition
+    if (isalpha(lastChar) || lastChar == '_') {
+      std::string idStr;
+      bool prevDigit = false;
+      while (isalnum(lastChar) || lastChar == '_') {
+        if (isdigit(lastChar)) {
+          if (prevDigit) {
+            lexHadError = true;
+            llvm::errs() << "Illegal identifier (consecutive digits): " << idStr << lastChar << "\n";
+          }
+          prevDigit = true;
+        } else {
+          prevDigit = false;
+        }
+        idStr.push_back(lastChar);
+        lastChar = Token(getNextChar());
+      }
+      identifierStr = idStr;
+      if (idStr == "return")   { recordedTokens.push_back(tok_return); return tok_return; }
+      if (idStr == "var")      { recordedTokens.push_back(tok_var);    return tok_var; }
+      if (idStr == "def")      { recordedTokens.push_back(tok_def);    return tok_def; }
+      recordedTokens.push_back(tok_identifier);
+      return tok_identifier;
+    }
 
-    // TODO: 3.
-    // 改进识别数字的方法，使编译器可以识别并在终端报告非法数字，非法表示包括：9.9.9，9..9，.999，..9，9..等。
     if (isdigit(lastChar) || lastChar == '.') {
       std::string numStr;
-      do {
-        numStr += lastChar;
+      bool seenDot = false;
+      bool prevDot = false;
+      bool error = false;
+      // First char check: dot cannot be first
+      if (lastChar == '.') {
+        error = true;
+      }
+      while (isdigit(lastChar) || lastChar == '.') {
+        if (lastChar == '.') {
+          if (seenDot || prevDot) {
+            error = true;
+          }
+          seenDot = true;
+          prevDot = true;
+        } else {
+          prevDot = false;
+        }
+        numStr.push_back(lastChar);
         lastChar = Token(getNextChar());
-      } while (isdigit(lastChar) || lastChar == '.');
-
+      }
+      if (error || !isdigit(numStr.back())) {
+        lexHadError = true;
+        llvm::errs() << "Illegal number format: " << numStr << "\n";
+      }
       numVal = strtod(numStr.c_str(), nullptr);
+      recordedTokens.push_back(tok_number);
       return tok_number;
     }
 
@@ -175,11 +198,15 @@ class Lexer {
     }
 
     // Check for end of file.  Don't eat the EOF.
-    if (lastChar == EOF) return tok_eof;
+    if (lastChar == EOF) {
+      recordedTokens.push_back(tok_eof);
+      return tok_eof;
+    }
 
     // Otherwise, just return the character as its ascii value.
     Token thisChar = Token(lastChar);
     lastChar = Token(getNextChar());
+    recordedTokens.push_back(thisChar);
     return thisChar;
   }
 
