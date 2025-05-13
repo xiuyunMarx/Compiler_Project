@@ -35,7 +35,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_BINARY_DIR}/include)
 link_directories(${LLVM_BUILD_LIBRARY_DIR})
 add_definitions(${LLVM_DEFINITIONS})
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
 add_custom_target(Pony)
 set_target_properties(Pony PROPERTIES FOLDER Examples)

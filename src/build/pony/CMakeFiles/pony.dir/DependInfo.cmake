@@ -33,8 +33,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
   "include"
   "../pony/include"
-  "pony/include"
   "pony"
+  "pony/include"
   )
 
 # Targets to which this target links.

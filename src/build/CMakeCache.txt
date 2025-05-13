@@ -333,10 +333,10 @@ MLIR_DIR:PATH=/home/workspace/llvm-project/build/lib/cmake/mlir
 Terminfo_LIBRARIES:FILEPATH=/usr/lib/x86_64-linux-gnu/libtinfo.so
 
 //Value Computed by CMake
-standalone-dialect_BINARY_DIR:STATIC=/home/workspace/pony_compiler/src/build/pony
+standalone-dialect_BINARY_DIR:STATIC=/home/workspace/pony_compiler/src/build
 
 //Value Computed by CMake
-standalone-dialect_SOURCE_DIR:STATIC=/home/workspace/pony_compiler/src/pony
+standalone-dialect_SOURCE_DIR:STATIC=/home/workspace/pony_compiler/src
 
 
 ########################
