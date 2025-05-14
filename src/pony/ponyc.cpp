@@ -198,7 +198,7 @@ int dumpToken() {
 
   // If any lexical errors were detected, report and exit
   if (lexer.hadLexError()) {
-    llvm::errs() << "Lexical analysis encountered errors.\n";
+    llvm::errs() << "\n Lexical analysis encountered errors.\n";
     return 1;
   }
   auto tokens = lexer.getRecordedTokens();

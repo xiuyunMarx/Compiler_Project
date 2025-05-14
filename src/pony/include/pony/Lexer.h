@@ -40,6 +40,7 @@ enum Token : int {
 
   tok_identifier = -5,
   tok_number = -6,
+  error = -7
 };
 
 struct TokenInfo{
@@ -144,7 +145,12 @@ class Lexer {
         if (isdigit(lastChar)) {
           if (prevDigit) {
             lexHadError = true;
-            llvm::errs() << "Illegal identifier (consecutive digits): " << idStr << lastChar << "\n";
+            while(lastChar != ' '  && tmp != 'EOF') {
+              idStr.push_back(tmp);
+              tmp = Token(getNextChar());
+            }
+            llvm::errs() << "Error: contigous digits in identifier: " << idStr << lastChar << "\n";
+            return Token::error;
           }
           prevDigit = true;
         } else {
