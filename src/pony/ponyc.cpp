@@ -41,7 +41,6 @@ static cl::opt<std::string> inputFilename(cl::Positional,
                                           cl::desc("<input pony file>"),
                                           cl::init("-"),
                                           cl::value_desc("filename"));
-
 namespace {
 enum InputType { Pony, MLIR };
 }  // namespace
@@ -202,31 +201,36 @@ int dumpToken() {
     llvm::errs() << "Lexical analysis encountered errors.\n";
     return 1;
   }
+  auto tokens = lexer.getRecordedTokens();
+  for (auto tok : tokens)
+    if(tok == pony::tok_eof) {
+      llvm::outs() << "<EOF>\n";
+    } 
 
   // Otherwise, print all recorded tokens in order
-  auto tokens = lexer.getRecordedTokens();
-  for (auto tok : tokens) {
-    const char *name = nullptr;
-    switch (tok) {
-    case pony::tok_eof:             name = "<EOF>"; break;
-    case pony::tok_return:          name = "return"; break;
-    case pony::tok_var:             name = "var"; break;
-    case pony::tok_def:             name = "def"; break;
-    case pony::tok_identifier:      name = "identifier"; break;
-    case pony::tok_number:          name = "number"; break;
-    case pony::tok_semicolon:       name = ";"; break;
-    case pony::tok_parenthese_open: name = "("; break;
-    case pony::tok_parenthese_close:name = ")"; break;
-    case pony::tok_bracket_open:    name = "{"; break;
-    case pony::tok_bracket_close:   name = "}"; break;
-    case pony::tok_sbracket_open:   name = "["; break;
-    case pony::tok_sbracket_close:  name = "]"; break;
-    default:
-      // For other single-character tokens
-      name = " "; //none output
-    }
-    llvm::outs() << name << '\n';
-  }
+  // auto tokens = lexer.getRecordedTokens();
+  // for (auto tok : tokens) {
+  //   const char *name = nullptr;
+  //   switch (tok) {
+  //   case pony::tok_eof:             name = "<EOF>"; break;
+  //   case pony::tok_return:          name = "return"; break;
+  //   case pony::tok_var:             name = "var"; break;
+  //   case pony::tok_def:             name = "def"; break;
+  //   case pony::tok_identifier:      name = "identifier"; break;
+  //   case pony::tok_number:          name = "number"; break;
+  //   case pony::tok_semicolon:       name = ";"; break;
+  //   case pony::tok_parenthese_open: name = "("; break;
+  //   case pony::tok_parenthese_close:name = ")"; break;
+  //   case pony::tok_bracket_open:    name = "{"; break;
+  //   case pony::tok_bracket_close:   name = "}"; break;
+  //   case pony::tok_sbracket_open:   name = "["; break;
+  //   case pony::tok_sbracket_close:  name = "]"; break;
+  //   default:
+  //     // For other single-character tokens
+  //     name = " "; //none output
+  //   }
+  //   llvm::outs() << name << '\n';
+  // }
   return 0;
 }
 
