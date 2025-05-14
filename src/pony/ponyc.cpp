@@ -194,7 +194,7 @@ int dumpToken() {
     lexer.getNextToken();
   }
   // Include the EOF token
-  lexer.getNextToken();
+  // lexer.getNextToken();
 
   // If any lexical errors were detected, report and exit
   if (lexer.hadLexError()) {
@@ -202,10 +202,10 @@ int dumpToken() {
     return 1;
   }
   auto tokens = lexer.getRecordedTokens();
-  for (auto tok : tokens)
-    if(tok == pony::tok_eof) {
-      llvm::outs() << "<EOF>\n";
-    } 
+  // for (auto tok : tokens)
+  //   if(tok == pony::tok_eof) {
+  //     llvm::outs() << "<EOF>\n";
+  //   } 
 
   // Otherwise, print all recorded tokens in order
   // auto tokens = lexer.getRecordedTokens();
@@ -250,7 +250,6 @@ int dumpAST() {
 int dumpLLVMIR(mlir::ModuleOp module) {
   // Register the translation to LLVM IR with the MLIR context.
   mlir::registerLLVMDialectTranslation(*module->getContext());
-
   // Convert the module to LLVM IR in a new LLVM IR context.
   llvm::LLVMContext llvmContext;
   auto llvmModule = mlir::translateModuleToLLVMIR(module, llvmContext);

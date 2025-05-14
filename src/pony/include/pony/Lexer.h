@@ -145,11 +145,12 @@ class Lexer {
         if (isdigit(lastChar)) {
           if (prevDigit) {
             lexHadError = true;
-            while(lastChar != ' '  && tmp != 'EOF') {
-              idStr.push_back(tmp);
-              tmp = Token(getNextChar());
+            while(isalpha(lastChar) || isdigit(lastChar) || lastChar == '_') {
+              idStr.push_back(lastChar);
+              lastChar = Token(getNextChar());
             }
-            llvm::errs() << "Error: contigous digits in identifier: " << idStr << lastChar << "\n";
+            llvm::errs()<<curLineNum<<":"<<curCol<<": ";
+            llvm::errs() << "ERROR: continuous digits in identifier. ";
             return Token::error;
           }
           prevDigit = true;
@@ -193,7 +194,9 @@ class Lexer {
       }
       if (error || !isdigit(numStr.back())) {
         lexHadError = true;
-        llvm::errs() << "Illegal number format: " << numStr << "\n";
+        llvm::errs()<<curLineNum<<":"<<curCol<<": ";
+        llvm::errs() << "Illegal number format"  << " ";
+        return Token::error;
       }
       numVal = strtod(numStr.c_str(), nullptr);
       llvm::outs() << "" << numStr << " ";
@@ -213,6 +216,7 @@ class Lexer {
     // Check for end of file.  Don't eat the EOF.
     if (lastChar == EOF) {
       recordedTokens.push_back(tok_eof);
+      llvm::outs() << "EOF\n";
       return tok_eof;
     }
 
