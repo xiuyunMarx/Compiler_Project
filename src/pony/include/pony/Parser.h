@@ -538,7 +538,7 @@ class Parser {
   std::unique_ptr<R> parseError(T &&expected, U &&context = "") {
     auto curToken = lexer.getCurToken();
     llvm::errs() << "Parse error (" << lexer.getLastLocation().line << ", "
-                 << lexer.getLastLocation().col << "): expected '" << expected
+                 << lexer.getLastLocation().col + 1<< "): expected '" << expected
                  << "' " << context << " but has Token " << curToken;
     if (isprint(curToken)) llvm::errs() << " '" << (char)curToken << "'";
     llvm::errs() << "\n";
