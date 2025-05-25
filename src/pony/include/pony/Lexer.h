@@ -31,7 +31,7 @@ enum Token : int {
   tok_bracket_close = '}',
   tok_sbracket_open = '[',
   tok_sbracket_close = ']',
-
+  tok_comma = ',',
   tok_eof = -1,
 
   tok_return = -2,
@@ -220,8 +220,47 @@ class Lexer {
       return tok_eof;
     }
 
-    // Otherwise, just return the character as its ascii value.
+    //check the semicolon and other single-character tokens
     llvm::outs() << "" << (char)lastChar << " ";
+
+    switch (lastChar){
+    case ';':
+      recordedTokens.push_back(tok_semicolon);
+      lastChar = Token(getNextChar());
+      return tok_semicolon;
+    case '(':
+      recordedTokens.push_back(tok_parenthese_open);
+      lastChar = Token(getNextChar());
+      return tok_parenthese_open;
+    case ')':
+      recordedTokens.push_back(tok_parenthese_close);
+      lastChar = Token(getNextChar());
+      return tok_parenthese_close;
+    case '{':
+      recordedTokens.push_back(tok_bracket_open);
+      lastChar = Token(getNextChar());
+      return tok_bracket_open;
+    case '}':
+      recordedTokens.push_back(tok_bracket_close);
+      lastChar = Token(getNextChar());
+      return tok_bracket_close;
+    case '[':
+      recordedTokens.push_back(tok_sbracket_open);
+      lastChar = Token(getNextChar());
+      return tok_sbracket_open;
+    case ']':
+      recordedTokens.push_back(tok_sbracket_close);
+      lastChar = Token(getNextChar());
+      return tok_sbracket_close;
+    case ',':
+      recordedTokens.push_back(tok_comma);
+      lastChar = Token(getNextChar());
+      return tok_comma;
+    default:
+      break;
+    }
+    // Otherwise, just return the character as its ascii value.
+
     Token thisChar = Token(lastChar);
     lastChar = Token(getNextChar());
     recordedTokens.push_back(thisChar);
@@ -231,7 +270,7 @@ class Lexer {
 
   /// The last token read from the input.
   Token curTok = tok_eof;
-
+  
   /// Location for `curTok`.
   Location lastLocation;
 

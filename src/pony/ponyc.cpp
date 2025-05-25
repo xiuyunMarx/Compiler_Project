@@ -173,6 +173,7 @@ int loadAndProcessMLIR(mlir::MLIRContext &context,
 }
 
 int dumpToken() {
+  
   if (inputType == InputType::MLIR) {
     llvm::errs() << "Can't dump Pony Tokens when the input is MLIR\n";
     return 5;
@@ -201,18 +202,14 @@ int dumpToken() {
     llvm::errs() << "\n Lexical analysis encountered errors.\n";
     return 1;
   }
-  auto tokens = lexer.getRecordedTokens();
-  // for (auto tok : tokens)
-  //   if(tok == pony::tok_eof) {
-  //     llvm::outs() << "<EOF>\n";
-  //   } 
+
 
   // Otherwise, print all recorded tokens in order
   // auto tokens = lexer.getRecordedTokens();
   // for (auto tok : tokens) {
-  //   const char *name = nullptr;
+  //   std::string name;
   //   switch (tok) {
-  //   case pony::tok_eof:             name = "<EOF>"; break;
+  //   case pony::tok_eof:             name = "EOF"; break;
   //   case pony::tok_return:          name = "return"; break;
   //   case pony::tok_var:             name = "var"; break;
   //   case pony::tok_def:             name = "def"; break;
@@ -225,11 +222,12 @@ int dumpToken() {
   //   case pony::tok_bracket_close:   name = "}"; break;
   //   case pony::tok_sbracket_open:   name = "["; break;
   //   case pony::tok_sbracket_close:  name = "]"; break;
+  //   case pony::tok_comma:          name = ","; break;
   //   default:
   //     // For other single-character tokens
-  //     name = " "; //none output
+  //     name += char(tok); //output directly
   //   }
-  //   llvm::outs() << name << '\n';
+  //   llvm::outs() << name << ' ';
   // }
   return 0;
 }
