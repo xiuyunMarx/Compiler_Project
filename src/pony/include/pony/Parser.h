@@ -522,7 +522,7 @@ class Parser {
         return parseError<ExprAST>("primary", "in binary expression");
 
       int nextPrec = getTokPrecedence();
-      if (nextPrec < nextPrec) {
+      if (tokPrec < nextPrec) {
         rhs = parseBinOpRHS(tokPrec + 1, std::move(rhs));
         if (!rhs)
           return nullptr;
