@@ -1,14 +1,14 @@
 Performing C SOURCE FILE Test C_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_d458c/fast && /usr/bin/make -f CMakeFiles/cmTC_d458c.dir/build.make CMakeFiles/cmTC_d458c.dir/build
+Run Build Command(s):/usr/bin/make cmTC_e6b08/fast && /usr/bin/make -f CMakeFiles/cmTC_e6b08.dir/build.make CMakeFiles/cmTC_e6b08.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d458c.dir/src.c.o
-/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -DC_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW   -Werror -Werror=unguarded-availability-new -o CMakeFiles/cmTC_d458c.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
+Building C object CMakeFiles/cmTC_e6b08.dir/src.c.o
+/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -DC_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW   -Werror -Werror=unguarded-availability-new -o CMakeFiles/cmTC_e6b08.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
 cc1: error: '-Werror=unguarded-availability-new': no option -Wunguarded-availability-new
-make[1]: *** [CMakeFiles/cmTC_d458c.dir/build.make:66: CMakeFiles/cmTC_d458c.dir/src.c.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_e6b08.dir/build.make:66: CMakeFiles/cmTC_e6b08.dir/src.c.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_d458c/fast] Error 2
+make: *** [Makefile:121: cmTC_e6b08/fast] Error 2
 
 
 Source file was:
@@ -16,14 +16,14 @@ int main(void) { return 0; }
 Performing C++ SOURCE FILE Test CXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_6b960/fast && /usr/bin/make -f CMakeFiles/cmTC_6b960.dir/build.make CMakeFiles/cmTC_6b960.dir/build
+Run Build Command(s):/usr/bin/make cmTC_97223/fast && /usr/bin/make -f CMakeFiles/cmTC_97223.dir/build.make CMakeFiles/cmTC_97223.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_6b960.dir/src.cxx.o
-/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -DCXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW   -Werror -Werror=unguarded-availability-new -std=gnu++14 -o CMakeFiles/cmTC_6b960.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
+Building CXX object CMakeFiles/cmTC_97223.dir/src.cxx.o
+/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -DCXX_SUPPORTS_WERROR_UNGUARDED_AVAILABILITY_NEW   -Werror -Werror=unguarded-availability-new -std=gnu++14 -o CMakeFiles/cmTC_97223.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
 cc1plus: error: '-Werror=unguarded-availability-new': no option -Wunguarded-availability-new
-make[1]: *** [CMakeFiles/cmTC_6b960.dir/build.make:66: CMakeFiles/cmTC_6b960.dir/src.cxx.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_97223.dir/build.make:66: CMakeFiles/cmTC_97223.dir/src.cxx.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_6b960/fast] Error 2
+make: *** [Makefile:121: cmTC_97223/fast] Error 2
 
 
 Source file was:
@@ -31,14 +31,14 @@ int main() { return 0; }
 Performing C SOURCE FILE Test C_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_fca03/fast && /usr/bin/make -f CMakeFiles/cmTC_fca03.dir/build.make CMakeFiles/cmTC_fca03.dir/build
+Run Build Command(s):/usr/bin/make cmTC_0a4b5/fast && /usr/bin/make -f CMakeFiles/cmTC_0a4b5.dir/build.make CMakeFiles/cmTC_0a4b5.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_fca03.dir/src.c.o
-/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -DC_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG   -Werror -Wcovered-switch-default -o CMakeFiles/cmTC_fca03.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
+Building C object CMakeFiles/cmTC_0a4b5.dir/src.c.o
+/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -DC_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG   -Werror -Wcovered-switch-default -o CMakeFiles/cmTC_0a4b5.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
 cc: error: unrecognized command line option '-Wcovered-switch-default'; did you mean '-Wno-switch-default'?
-make[1]: *** [CMakeFiles/cmTC_fca03.dir/build.make:66: CMakeFiles/cmTC_fca03.dir/src.c.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_0a4b5.dir/build.make:66: CMakeFiles/cmTC_0a4b5.dir/src.c.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_fca03/fast] Error 2
+make: *** [Makefile:121: cmTC_0a4b5/fast] Error 2
 
 
 Source file was:
@@ -46,14 +46,14 @@ int main(void) { return 0; }
 Performing C++ SOURCE FILE Test CXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_090ba/fast && /usr/bin/make -f CMakeFiles/cmTC_090ba.dir/build.make CMakeFiles/cmTC_090ba.dir/build
+Run Build Command(s):/usr/bin/make cmTC_5b8e9/fast && /usr/bin/make -f CMakeFiles/cmTC_5b8e9.dir/build.make CMakeFiles/cmTC_5b8e9.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_090ba.dir/src.cxx.o
-/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -Wimplicit-fallthrough -DCXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG   -Werror -Wcovered-switch-default -std=gnu++14 -o CMakeFiles/cmTC_090ba.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
+Building CXX object CMakeFiles/cmTC_5b8e9.dir/src.cxx.o
+/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -Wimplicit-fallthrough -DCXX_SUPPORTS_COVERED_SWITCH_DEFAULT_FLAG   -Werror -Wcovered-switch-default -std=gnu++14 -o CMakeFiles/cmTC_5b8e9.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
 c++: error: unrecognized command line option '-Wcovered-switch-default'; did you mean '-Wno-switch-default'?
-make[1]: *** [CMakeFiles/cmTC_090ba.dir/build.make:66: CMakeFiles/cmTC_090ba.dir/src.cxx.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_5b8e9.dir/build.make:66: CMakeFiles/cmTC_5b8e9.dir/src.cxx.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_090ba/fast] Error 2
+make: *** [Makefile:121: cmTC_5b8e9/fast] Error 2
 
 
 Source file was:
@@ -61,17 +61,17 @@ int main() { return 0; }
 Performing C++ SOURCE FILE Test CXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_3ca39/fast && /usr/bin/make -f CMakeFiles/cmTC_3ca39.dir/build.make CMakeFiles/cmTC_3ca39.dir/build
+Run Build Command(s):/usr/bin/make cmTC_2ec12/fast && /usr/bin/make -f CMakeFiles/cmTC_2ec12.dir/build.make CMakeFiles/cmTC_2ec12.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_3ca39.dir/src.cxx.o
-/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-class-memaccess -Wno-redundant-move -Wno-pessimizing-move -Wno-noexcept-type -DCXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR  -Werror=non-virtual-dtor   -std=gnu++14 -o CMakeFiles/cmTC_3ca39.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
+Building CXX object CMakeFiles/cmTC_2ec12.dir/src.cxx.o
+/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-class-memaccess -Wno-redundant-move -Wno-pessimizing-move -Wno-noexcept-type -DCXX_WONT_WARN_ON_FINAL_NONVIRTUALDTOR  -Werror=non-virtual-dtor   -std=gnu++14 -o CMakeFiles/cmTC_2ec12.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
 /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx:2:36: error: 'class base' has virtual functions and accessible non-virtual destructor [-Werror=non-virtual-dtor]
     2 |                              class base {friend f; public: virtual void anchor();protected: ~base();};
       |                                    ^~~~
 cc1plus: some warnings being treated as errors
-make[1]: *** [CMakeFiles/cmTC_3ca39.dir/build.make:66: CMakeFiles/cmTC_3ca39.dir/src.cxx.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_2ec12.dir/build.make:66: CMakeFiles/cmTC_2ec12.dir/src.cxx.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_3ca39/fast] Error 2
+make: *** [Makefile:121: cmTC_2ec12/fast] Error 2
 
 
 Source file was:
@@ -81,17 +81,17 @@ class f {};
 Performing C SOURCE FILE Test C_WCOMMENT_ALLOWS_LINE_WRAP failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_e83fc/fast && /usr/bin/make -f CMakeFiles/cmTC_e83fc.dir/build.make CMakeFiles/cmTC_e83fc.dir/build
+Run Build Command(s):/usr/bin/make cmTC_aed63/fast && /usr/bin/make -f CMakeFiles/cmTC_aed63.dir/build.make CMakeFiles/cmTC_aed63.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e83fc.dir/src.c.o
-/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -DC_WCOMMENT_ALLOWS_LINE_WRAP  -Werror -Wcomment   -o CMakeFiles/cmTC_e83fc.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
+Building C object CMakeFiles/cmTC_aed63.dir/src.c.o
+/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -DC_WCOMMENT_ALLOWS_LINE_WRAP  -Werror -Wcomment   -o CMakeFiles/cmTC_aed63.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
 /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c:1:1: error: multi-line comment [-Werror=comment]
     1 | // \
       | ^
 cc1: all warnings being treated as errors
-make[1]: *** [CMakeFiles/cmTC_e83fc.dir/build.make:66: CMakeFiles/cmTC_e83fc.dir/src.c.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_aed63.dir/build.make:66: CMakeFiles/cmTC_aed63.dir/src.c.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_e83fc/fast] Error 2
+make: *** [Makefile:121: cmTC_aed63/fast] Error 2
 
 
 Source file was:
@@ -101,14 +101,14 @@ int main() {return 0;}
 Performing C SOURCE FILE Test C_SUPPORTS_STRING_CONVERSION_FLAG failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_0d69f/fast && /usr/bin/make -f CMakeFiles/cmTC_0d69f.dir/build.make CMakeFiles/cmTC_0d69f.dir/build
+Run Build Command(s):/usr/bin/make cmTC_c75d8/fast && /usr/bin/make -f CMakeFiles/cmTC_c75d8.dir/build.make CMakeFiles/cmTC_c75d8.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0d69f.dir/src.c.o
-/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-comment -DC_SUPPORTS_STRING_CONVERSION_FLAG   -Werror -Wstring-conversion -o CMakeFiles/cmTC_0d69f.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
+Building C object CMakeFiles/cmTC_c75d8.dir/src.c.o
+/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-comment -DC_SUPPORTS_STRING_CONVERSION_FLAG   -Werror -Wstring-conversion -o CMakeFiles/cmTC_c75d8.dir/src.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.c
 cc: error: unrecognized command line option '-Wstring-conversion'; did you mean '-Wsign-conversion'?
-make[1]: *** [CMakeFiles/cmTC_0d69f.dir/build.make:66: CMakeFiles/cmTC_0d69f.dir/src.c.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_c75d8.dir/build.make:66: CMakeFiles/cmTC_c75d8.dir/src.c.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_0d69f/fast] Error 2
+make: *** [Makefile:121: cmTC_c75d8/fast] Error 2
 
 
 Source file was:
@@ -116,14 +116,14 @@ int main(void) { return 0; }
 Performing C++ SOURCE FILE Test CXX_SUPPORTS_STRING_CONVERSION_FLAG failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_b4bc0/fast && /usr/bin/make -f CMakeFiles/cmTC_b4bc0.dir/build.make CMakeFiles/cmTC_b4bc0.dir/build
+Run Build Command(s):/usr/bin/make cmTC_b8dba/fast && /usr/bin/make -f CMakeFiles/cmTC_b8dba.dir/build.make CMakeFiles/cmTC_b8dba.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b4bc0.dir/src.cxx.o
-/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-class-memaccess -Wno-redundant-move -Wno-pessimizing-move -Wno-noexcept-type -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -DCXX_SUPPORTS_STRING_CONVERSION_FLAG   -Werror -Wstring-conversion -std=gnu++14 -o CMakeFiles/cmTC_b4bc0.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
+Building CXX object CMakeFiles/cmTC_b8dba.dir/src.cxx.o
+/usr/bin/c++    -fPIC -fno-semantic-interposition -fvisibility-inlines-hidden -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-class-memaccess -Wno-redundant-move -Wno-pessimizing-move -Wno-noexcept-type -Wdelete-non-virtual-dtor -Wsuggest-override -Wno-comment -DCXX_SUPPORTS_STRING_CONVERSION_FLAG   -Werror -Wstring-conversion -std=gnu++14 -o CMakeFiles/cmTC_b8dba.dir/src.cxx.o -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/src.cxx
 c++: error: unrecognized command line option '-Wstring-conversion'; did you mean '-Wsign-conversion'?
-make[1]: *** [CMakeFiles/cmTC_b4bc0.dir/build.make:66: CMakeFiles/cmTC_b4bc0.dir/src.cxx.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_b8dba.dir/build.make:66: CMakeFiles/cmTC_b8dba.dir/src.cxx.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_b4bc0/fast] Error 2
+make: *** [Makefile:121: cmTC_b8dba/fast] Error 2
 
 
 Source file was:
@@ -131,17 +131,17 @@ int main() { return 0; }
 Determining if the os_signpost_interval_begin exist failed with the following output:
 Change Dir: /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_5cd7f/fast && /usr/bin/make -f CMakeFiles/cmTC_5cd7f.dir/build.make CMakeFiles/cmTC_5cd7f.dir/build
+Run Build Command(s):/usr/bin/make cmTC_b36e2/fast && /usr/bin/make -f CMakeFiles/cmTC_b36e2.dir/build.make CMakeFiles/cmTC_b36e2.dir/build
 make[1]: Entering directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5cd7f.dir/CheckSymbolExists.c.o
-/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-comment -Wmisleading-indentation -ffunction-sections -fdata-sections    -o CMakeFiles/cmTC_5cd7f.dir/CheckSymbolExists.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Building C object CMakeFiles/cmTC_b36e2.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIC -fno-semantic-interposition -Werror=date-time -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wno-missing-field-initializers -Wimplicit-fallthrough -Wno-comment -Wmisleading-indentation -ffunction-sections -fdata-sections    -o CMakeFiles/cmTC_b36e2.dir/CheckSymbolExists.c.o   -c /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
 /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:10: fatal error: os/signpost.h: No such file or directory
     2 | #include <os/signpost.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
-make[1]: *** [CMakeFiles/cmTC_5cd7f.dir/build.make:66: CMakeFiles/cmTC_5cd7f.dir/CheckSymbolExists.c.o] Error 1
+make[1]: *** [CMakeFiles/cmTC_b36e2.dir/build.make:66: CMakeFiles/cmTC_b36e2.dir/CheckSymbolExists.c.o] Error 1
 make[1]: Leaving directory '/home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_5cd7f/fast] Error 2
+make: *** [Makefile:121: cmTC_b36e2/fast] Error 2
 
 
 File /home/workspace/pony_compiler/src/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:

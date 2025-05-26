@@ -191,11 +191,13 @@ class Parser {
     //       variable name
     if(lexer.getCurToken() != tok_identifier)
       return parseError<VarDeclExprAST>("identifier", "in variable declaration");
+    id = lexer.getId().str();
+
     // TODO: modify code to support definition type (3)
-    std::unique_ptr<VarType> type;  // Type is optional, it can be inferred
-    if(lexer.getCurToken() != tok_identifier && lexer.getCurToken() != '<')
-      return parseError<VarDeclExprAST>("identifier or type", "in variable declaration");
-    else if(lexer.getCurToken() == tok_identifier){
+    std::unique_ptr<VarType> type; // Type is optional, it can be inferred
+    if (lexer.getCurToken() != tok_identifier && lexer.getCurToken() != '<' && lexer.getCurToken() != tok_sbracket_open) {
+      return parseError<VarDeclExprAST>("identifier or type", "in variable and type declaration");      
+    }else if(lexer.getCurToken() == tok_identifier){
       id = lexer.getId().str();
       lexer.getNextToken(); // eat identifier
 
@@ -203,25 +205,24 @@ class Parser {
         type = parseType();
         if (!type)
           return nullptr;
-      }
+      }else if(lexer.getCurToken() == tok_sbracket_open) {
+        type = parseType();
+        if(!type) return nullptr;
+      } 
     } else if(lexer.getCurToken() == '<'){
       type = parseType();
       if (!type)
         return nullptr;
       // lexer.getNextToken(); // eatype
 
-      if (lexer.getCurToken() != tok_identifier){
-        loc = lexer.getLastLocation();
-        return parseError<VarDeclExprAST>("identifier", "in variable declaration");      
-      }
-  
+      if (lexer.getCurToken() != tok_identifier)
+        return parseError<VarDeclExprAST>("identifier", "in variable declaration");
       id = lexer.getId().str();
       lexer.getNextToken(); // eat identifier
     }
-    
 
     if (!type) type = std::make_unique<VarType>();
-    lexer.consume(Token('='));
+    lexer.consume(Token('=')); // eat '='
     auto expr = parseExpression();
     return std::make_unique<VarDeclExprAST>(std::move(loc), std::move(id),
                                             std::move(*type), std::move(expr));
@@ -539,6 +540,7 @@ class Parser {
     auto curToken = lexer.getCurToken();
     llvm::errs() << "Parse error (" << lexer.getLastLocation().line << ", "
                  << lexer.getLastLocation().col + 1<< "): expected '" << expected
+//               << lexer.getLastLocation().col << "): expected '" << expected
                  << "' " << context << " but has Token " << curToken;
     if (isprint(curToken)) llvm::errs() << " '" << (char)curToken << "'";
     llvm::errs() << "\n";
